@@ -35,7 +35,7 @@ const PostWidget = ({
   const primary = palette.primary.main;
 
   const patchLike = async () => {
-    const response = await fetch(`${window.location.origin}/posts/${postId}/like`, {
+    const response = await fetch(`https://sociopedia-backend-alpha.vercel.app/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`${window.location.origin}/assets/${picturePath}`}
+          src={`https://sociopedia-backend-alpha.vercel.app/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">

@@ -8,7 +8,7 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`${window.location.origin}/assets/${image}`}
+        src={`https://sociopedia-backend-alpha.vercel.app/assets/${image}`}
       />
     </Box>
   );

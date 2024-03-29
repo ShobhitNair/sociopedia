@@ -28,7 +28,7 @@
   app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
   app.use(cors(
     {
-      origin: ["https://quick-credit-frontend.vercel.app", "https://social-media-mern-two.vercel.app","http://localhost:3000"],
+      origin: ["https://quick-credit-frontend.vercel.app", "https://sociopedia-backend-alpha.vercel.app","http://localhost:3000"],
       methods: ["POST", "GET","PUT","DELETE"],
       credentials: true
     }
@@ -60,7 +60,7 @@
   const PORT = process.env.PORT|| 3001;
 
   mongoose.set('strictQuery', false);
-  
+
 app.get('/', (req, res) => {
   res.send('Welcome to social Media Server');
 });
