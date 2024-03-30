@@ -16,9 +16,19 @@ export const register = async (req, res) => {
       occupation,
     } = req.body;
 
-    const salt = await bcrypt.genSalt();    
-    const passwordHash = await bcrypt.hash(password, salt);
+    // Generate salt for password hashing
+    const salt = await bcrypt.genSalt();
+    if (!salt) {
+      throw new Error("Failed to generate salt for password hashing.");
+    }
 
+    // Hash the password
+    const passwordHash = await bcrypt.hash(password, salt);
+    if (!passwordHash) {
+      throw new Error("Failed to hash the password.");
+    }
+
+    // Create a new user instance
     const newUser = new User({
       firstName,
       lastName,
@@ -31,9 +41,13 @@ export const register = async (req, res) => {
       viewedProfile: Math.floor(Math.random() * 10000),
       impressions: Math.floor(Math.random() * 10000),
     });
+
+    // Save the new user to the database
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
   } catch (err) {
+    // Handle errors
+    console.error("Error during registration:", err);
     res.status(500).json({ error: err.message });
   }
 };
